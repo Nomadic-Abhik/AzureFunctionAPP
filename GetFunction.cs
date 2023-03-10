@@ -10,20 +10,16 @@ using Newtonsoft.Json;
 
 namespace FirstAzureFunctionApp
 {
-    public static class Function1
+    public static class GetFunction
     {
-        [FunctionName("Function1")]
-        public static async Task<IActionResult> Run(
+        [FunctionName("GetFunction")]
+        public static async Task<IActionResult> RunGetFunction(
             [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
             ILogger log)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
+            log.LogInformation("C# HTTP trigger function processed a Get request.");
 
             string name = req.Query["name"];
-
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-            name = name ?? data?.name;
 
             string responseMessage = string.IsNullOrEmpty(name)
                 ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
