@@ -14,7 +14,7 @@ namespace FirstAzureFunctionApp
     {
         [FunctionName("PostFunction")]
         public static async Task<IActionResult> RunPostFunction(
-            [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, "Post", Route = null)] HttpRequest req,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a Post request.");
