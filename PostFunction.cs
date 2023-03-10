@@ -21,6 +21,7 @@ namespace FirstAzureFunctionApp
 
            
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+            requestBody = requestBody ?? "Boni";
             dynamic data = JsonConvert.DeserializeObject(requestBody);
             string name = data?.name;
 

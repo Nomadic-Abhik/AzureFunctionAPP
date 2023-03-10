@@ -20,7 +20,7 @@ namespace FirstAzureFunctionApp
             log.LogInformation("C# HTTP trigger function processed a Get request.");
 
             string name = req.Query["name"];
-
+            name = name ?? "Abhik";
             string responseMessage = string.IsNullOrEmpty(name)
                 ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
                 : $"Hello Miss, {name}. This HTTP triggered function executed successfully.";
